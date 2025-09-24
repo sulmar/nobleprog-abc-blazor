@@ -1,0 +1,40 @@
+﻿@page "/customers"
+@using Domain.Models
+@inject HttpClient Http
+
+<h3>Customers</h3>
+
+@if (customers is null)
+{
+    <p>Loading customers...</p>
+}
+else
+{
+    <ul>
+        @foreach(var customer in customers)
+        {
+            <li>@customer.Name @customer.Email</li>
+        }      
+    </ul>
+}
+
+
+<p>Your x: @x</p>
+
+@code {
+
+    private int x = 10;
+
+    // [Inject]
+    // private HttpClient Http { get; set; } 
+
+    private IEnumerable<Customer>? customers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        customers = await Http.GetFromJsonAsync<IEnumerable<Customer>>("api/customers");
+    }
+
+}
+
+

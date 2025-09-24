@@ -5,7 +5,7 @@ namespace Infrastructure.Repositories;
 
 public class InMemoryCustomerRepository : InMemoryEntityRepository<Customer>, ICustomerRepository
 {
-    public InMemoryCustomerRepository(IEnumerable<Customer> entities) : base(entities)
+    public InMemoryCustomerRepository(IEnumerable<Customer> entities, IMessageSender messageSender) : base(entities)
     {
     }
 

@@ -1,0 +1,16 @@
+# For more info on HTTP files go to https://aka.ms/vs/httpfile
+
+@baseUrl = https://localhost:7081
+
+###
+
+GET {{baseUrl}}/api/customers
+Accept: application/json
+
+###
+
+
+GET {{baseUrl}}/api/customers/1
+Accept: application/xml
+
+###
