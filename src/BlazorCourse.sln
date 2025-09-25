@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyApp", "Bla
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{774CD28D-FBC4-4D81-9B55-D34C44581A5B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello.Api", "Hello.Api\Hello.Api.csproj", "{BE214F73-7324-4EC1-8DF5-7870679CE9B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,18 @@ Global
 		{774CD28D-FBC4-4D81-9B55-D34C44581A5B}.Release|x64.Build.0 = Release|Any CPU
 		{774CD28D-FBC4-4D81-9B55-D34C44581A5B}.Release|x86.ActiveCfg = Release|Any CPU
 		{774CD28D-FBC4-4D81-9B55-D34C44581A5B}.Release|x86.Build.0 = Release|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Debug|x64.Build.0 = Debug|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Debug|x86.Build.0 = Debug|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|x64.ActiveCfg = Release|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|x64.Build.0 = Release|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|x86.ActiveCfg = Release|Any CPU
+		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

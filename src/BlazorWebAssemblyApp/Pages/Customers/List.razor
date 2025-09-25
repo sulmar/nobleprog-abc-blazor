@@ -1,6 +1,6 @@
 ﻿@page "/customers"
-@using Domain.Models
-@inject HttpClient Http
+@using BlazorWebAssemblyApp.Services
+@inject ICustomerService Api
 
 <h3>Customers</h3>
 
@@ -10,39 +10,19 @@
 }
 else
 {
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-            </tr>             
-        </thead>
-
-        <tbody>                   
-            @foreach(var customer in customers)
-            {
-                <tr>
-                    <td>@customer.Name</td>
-                    <td>@customer.Email</td>
-                </tr>
-            }
-        </tbody>
-
-        <tfoot>
-            <tr>Count: @customers.Count()</tr>
-        </tfoot>
-
-    </table>
+    <CustomerTable Customers="@customers" />
 }
 
-
-<p>Your x: @x</p>
 
 @code {
 
-    private int x = 10;
+    private IEnumerable<Customer>? customers;
 
+    protected override async Task OnInitializedAsync()
+    {
+        customers = await Api.GetAll();
 
+       // StateHasChanged(); // WPF: PropertyChanged()
+    }
 }
-
 
