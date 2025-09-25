@@ -3,22 +3,37 @@ using System.Net.Http.Json;
 
 namespace BlazorWebAssemblyApp.Services;
 
-public interface ICustomerService
+// Generic Template
+public interface IEntityService<T>
+    where T : class
 {
-    Task<IEnumerable<Customer>?> GetAll();
+    Task<IEnumerable<T>?> GetAll();
 }
 
-public class CustomerService : ICustomerService
+public interface ICustomerService : IEntityService<Customer>
 {
-    private HttpClient http;
+    Task<Customer> GetByEmail(string email);
+}
 
-    public CustomerService(HttpClient http)
-    {
-        this.http = http;
-    }
 
-    public Task<IEnumerable<Customer>?> GetAll()
+public interface IProductService : IEntityService<Product>
+{
+}
+
+// Primary Constructor .NET 9
+public class CustomerService(HttpClient http) : ICustomerService
+{    
+    public Task<IEnumerable<Customer>?> GetAll() => http.GetFromJsonAsync<IEnumerable<Customer>>("api/customers");
+
+    public Task<Customer> GetByEmail(string email)
     {
-        return http.GetFromJsonAsync<IEnumerable<Customer>>("api/customers");
+        throw new NotImplementedException();
     }
 }
+
+
+public class ProductService(HttpClient http) : IProductService
+{
+    public Task<IEnumerable<Product>?> GetAll() => http.GetFromJsonAsync<IEnumerable<Product>>("api/products");
+}
+

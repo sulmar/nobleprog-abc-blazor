@@ -1,0 +1,27 @@
+﻿@page "/products"
+@using BlazorWebAssemblyApp.Services
+@inject IProductService Api
+
+<h3>Products</h3>
+
+@if (products is null)
+{
+    <p>Loading products...</p>
+}
+else
+{
+   @*  <CustomerTable Customers="@products" /> *@
+}
+
+@code {
+
+    private IEnumerable<Product>? products;
+
+    protected override async Task OnInitializedAsync()
+    {
+        products = await Api.GetAll();
+
+        // StateHasChanged(); // WPF: PropertyChanged()
+    }
+}
+

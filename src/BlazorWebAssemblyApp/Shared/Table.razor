@@ -1,0 +1,33 @@
+﻿@typeparam T
+@using Domain.Models
+
+<table class="table table-bordered table-striped">
+    <thead>        
+        @HeaderTemplate       
+    </thead>
+
+    <tbody>
+        @foreach (var item in Items)
+        {
+            @RowTemplate(item);         
+        }
+    </tbody>
+
+    <tfoot>
+        <tr>Count: @Items.Count()</tr>
+    </tfoot>
+
+</table>
+
+@code {
+
+    [Parameter, EditorRequired]
+    public required IEnumerable<T> Items { get; set; }
+
+    [Parameter]
+    public RenderFragment HeaderTemplate { get; set;  }
+
+    [Parameter, EditorRequired]
+    public required RenderFragment<T> RowTemplate { get; set; }
+
+}

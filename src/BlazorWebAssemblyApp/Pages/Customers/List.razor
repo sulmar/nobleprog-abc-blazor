@@ -10,9 +10,21 @@
 }
 else
 {
-    <CustomerTable Customers="@customers" />
+    <Table Items="@customers" >
+        <HeaderTemplate>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>
+        </HeaderTemplate>
+        <RowTemplate Context="customer">
+            <tr>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+            </tr>
+        </RowTemplate>
+     </Table>
 }
-
 
 @code {
 
@@ -21,7 +33,7 @@ else
     protected override async Task OnInitializedAsync()
     {
         customers = await Api.GetAll();
-
+      
        // StateHasChanged(); // WPF: PropertyChanged()
     }
 }
