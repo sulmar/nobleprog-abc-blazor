@@ -10,12 +10,29 @@
 }
 else
 {
-    <ul>
-        @foreach(var customer in customers)
-        {
-            <li>@customer.Name @customer.Email</li>
-        }      
-    </ul>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+            </tr>             
+        </thead>
+
+        <tbody>                   
+            @foreach(var customer in customers)
+            {
+                <tr>
+                    <td>@customer.Name</td>
+                    <td>@customer.Email</td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>Count: @customers.Count()</tr>
+        </tfoot>
+
+    </table>
 }
 
 
