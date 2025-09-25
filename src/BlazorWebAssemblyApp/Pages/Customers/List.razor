@@ -5,6 +5,11 @@
 <h3>Customers</h3>
 
 
+<div id="search-panel">
+    <input type="text" placeholder="What do you search?" @bind-value="@searchText" />
+    <button class="btn btn-primary" @onclick="@Search">Search</button>
+</div>
+
 <Loader IsLoading=@isLoading>
     <CustomerTable Customers="@customers" />    
 </Loader>
@@ -24,7 +29,24 @@
 
         isLoading = false;
 
-       // StateHasChanged(); // WPF: PropertyChanged()
+        // StateHasChanged(); // WPF: PropertyChanged()
+    }
+
+    private string searchText = "abc";
+
+
+    private async Task Search()
+    {
+        await SearchAsync(searchText);
+    }
+
+    private async Task SearchAsync(string text)
+    {
+        Console.WriteLine($"Searching {text}...");
+
+        await Task.Delay(3000);
+
+        Console.WriteLine("Found.");
     }
 }
 
