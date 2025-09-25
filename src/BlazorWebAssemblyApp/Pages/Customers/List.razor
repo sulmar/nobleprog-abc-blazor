@@ -25,15 +25,6 @@ else
 
     private int x = 10;
 
-    // [Inject]
-    // private HttpClient Http { get; set; } 
-
-    private IEnumerable<Customer>? customers;
-
-    protected override async Task OnInitializedAsync()
-    {
-        customers = await Http.GetFromJsonAsync<IEnumerable<Customer>>("api/customers");
-    }
 
 }
 
