@@ -10,20 +10,7 @@
 }
 else
 {
-    <Table Items="@customers" >
-        <HeaderTemplate>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-            </tr>
-        </HeaderTemplate>
-        <RowTemplate Context="customer">
-            <tr>
-                <td>@customer.Name</td>
-                <td>@customer.Email</td>
-            </tr>
-        </RowTemplate>
-     </Table>
+    <CustomerTable Customers="@customers" />
 }
 
 @code {
