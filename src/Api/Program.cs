@@ -17,6 +17,11 @@ builder.Services.AddScoped<IEnumerable<Customer>>(sp =>
 
 });
 
+
+builder.Services.AddScoped<IProductRepository, InMemoryProductRepository>();
+builder.Services.AddScoped<Faker<Product>, ProductFaker>();
+builder.Services.AddScoped<IEnumerable<Product>>(sp => sp.GetRequiredService<Faker<Product>>().Generate(20));
+
 builder.Services.AddScoped<IMessageSender, FakeMessageSender>();
 
 
@@ -38,8 +43,10 @@ app.MapGet("/", () => "Hello Api!");
 
 // Minimal Api
 
-app.MapGet("/api/customers", async (ICustomerRepository repository, IMessageSender messageSender)
+app.MapGet("/api/customers", async (ICustomerRepository repository)
     => await repository.GetAllAsync() ); // F9
 
+app.MapGet("/api/products", async (IProductRepository repository)
+    => await repository.GetAllAsync());
 
 app.Run();

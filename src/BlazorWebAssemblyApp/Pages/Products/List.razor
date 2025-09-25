@@ -6,11 +6,29 @@
 
 @if (products is null)
 {
-    <p>Loading products...</p>
+    <Placeholder Message="Loading products..." />
 }
 else
 {
-   @*  <CustomerTable Customers="@products" /> *@
+   <Table Items="@products">
+
+       <HeaderTemplate>
+           <tr>
+               <th>Name</th>
+               <th>Description</th>
+               <th>Price</th>
+           </tr>
+       </HeaderTemplate>
+
+       <RowTemplate Context="product">
+           <tr>
+               <td>@product.Name</td>
+               <td>@product.Description</td>
+               <td>@product.Price</td>
+            </tr>
+       </RowTemplate>
+
+   </Table>
 }
 
 @code {

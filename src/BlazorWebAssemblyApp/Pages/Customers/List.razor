@@ -4,23 +4,26 @@
 
 <h3>Customers</h3>
 
-@if (customers is null)
-{
-    <p>Loading customers...</p>
-}
-else
-{
-    <CustomerTable Customers="@customers" />
-}
+
+<Loader IsLoading=@isLoading>
+    <CustomerTable Customers="@customers" />    
+</Loader>
+    
 
 @code {
 
     private IEnumerable<Customer>? customers;
 
+    private bool isLoading;
+
     protected override async Task OnInitializedAsync()
     {
+        isLoading = true;
+
         customers = await Api.GetAll();
-      
+
+        isLoading = false;
+
        // StateHasChanged(); // WPF: PropertyChanged()
     }
 }
