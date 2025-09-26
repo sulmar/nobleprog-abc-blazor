@@ -1,32 +1,34 @@
 ﻿@page "/customers"
 @using BlazorWebAssemblyApp.Services
 @inject ICustomerService Api
+@inherits AppStateComponentBase
+@implements IDisposable
 
 <h3 id="customers-label">Customers</h3>
-
-
-
 @*
 
   two-way binding @bind-{property}
 *@
 
-<button class="btn btn-dark" @onclick=@ToggleTheme>Theme: @theme</button>
+<button class="btn btn-dark" @onclick=@AppState.ToggleTheme>Theme: @AppState.CurrentTheme</button>
 
 <SearchPanel ValueChanged=@SearchAsync />
 
-<CascadingValue Value="@theme">
 
-    <Loader IsLoading=@isLoading>
-        <CustomerTable Customers="@customers" />    
-    </Loader>
 
+<CascadingValue Value="@x">
+    <CascadingValue Value="@theme" Name="t">
+        <CascadingValue Value="@name" Name="n">
+            <Loader IsLoading=@isLoading>
+                <CustomerTable Customers="@customers" />    
+            </Loader>
+        </CascadingValue>
+    </CascadingValue>
 </CascadingValue>
-
-
 
     
 @code {
+
 
     private IEnumerable<Customer>? customers;
 
@@ -55,9 +57,21 @@
 
     private string theme = "dark";
 
-    private void ToggleTheme()
+    private int x = 10;
+
+    private string name = "Contor";
+
+    private ApplicationContext AppContext = new ApplicationContext();
+ 
+
+    public class ApplicationContext
     {
-        theme = theme == "light" ? "dark" : "light";
+        public string Theme { get; set; }
+        public string FontSize { get; set; }
     }
+
+    
 }
+
+
 

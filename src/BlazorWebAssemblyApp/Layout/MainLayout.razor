@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@inherits AppStateLayoutComponentBase
+
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -8,7 +9,7 @@
         
 
         <div class="top-row px-4">
-            <button class="btn btn-dark" @onclick=@ToggleTheme>Theme: @theme</button>
+            <button class="btn btn-dark" @onclick=@AppState.ToggleTheme>Theme: @AppState.CurrentTheme</button>
 
             <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
         </div>
@@ -20,11 +21,4 @@
 </div>
 
 
-@code {
-    private string theme = "light";
 
-    private void ToggleTheme()
-    {
-        theme = theme == "light" ? "dark" : "light";
-    }
-}

@@ -1,7 +1,7 @@
 ﻿@typeparam T
 @using Domain.Models
 
-<table class="table table-bordered table-striped table-@Theme">
+<table class="table table-bordered table-striped table-@AppState.CurrentTheme">
     <thead>        
         @HeaderTemplate       
     </thead>
@@ -14,10 +14,20 @@
     </tbody>
 
     <tfoot>
-        <tr>Count: @Items.Count()</tr>
+        <tr>
+            <td>
+                Count: @Items.Count() 
+            </td>
+            <td>
+                @Name: @Counter
+            </td>
+            
+        </tr>
     </tfoot>
 
 </table>
+
+
 
 @code {
 
@@ -30,7 +40,26 @@
     [Parameter, EditorRequired]
     public required RenderFragment<T> RowTemplate { get; set; }
 
-    [CascadingParameter]
+    [CascadingParameter(Name = "t")]
     public string Theme { get; set; } = "light";
+
+    [CascadingParameter(Name = "n")]
+    public string Name { get; set; } = "Counter";
+
+    [CascadingParameter]
+    public int Counter { get; set; }
+
+    [CascadingParameter]
+    public ApplicationState AppState { get; set; }
+
+    protected override void OnInitialized()
+    {
+        AppState.OnChange += StateHasChanged; // PropertyChanged(sender, arg)
+    }
+
+    public void Dispose()
+    {
+        AppState.OnChange -= StateHasChanged;
+    }
 
 }
