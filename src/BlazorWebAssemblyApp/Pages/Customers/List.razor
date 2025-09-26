@@ -4,15 +4,17 @@
 
 <h3>Customers</h3>
 
+@*
 
-<div id="search-panel">
-    <input type="text" placeholder="What do you search?" @bind-value="@searchText" />
-    <button class="btn btn-primary" @onclick="@Search">Search</button>
-</div>
+  two-way binding @bind-{property}
+*@
+
+<SearchPanel ValueChanged=@SearchAsync />
 
 <Loader IsLoading=@isLoading>
     <CustomerTable Customers="@customers" />    
 </Loader>
+
     
 
 @code {
@@ -32,17 +34,10 @@
         // StateHasChanged(); // WPF: PropertyChanged()
     }
 
-    private string searchText = "abc";
-
-
-    private async Task Search()
-    {
-        await SearchAsync(searchText);
-    }
 
     private async Task SearchAsync(string text)
     {
-        Console.WriteLine($"Searching {text}...");
+        Console.WriteLine($"Searching customers {text}...");
 
         await Task.Delay(3000);
 

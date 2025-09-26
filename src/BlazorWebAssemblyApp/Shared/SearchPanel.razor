@@ -1,0 +1,18 @@
+﻿<div id="search-panel">
+    <input type="text" placeholder="What do you search?" @bind="@searchText" />
+    <button class="btn btn-primary" @onclick="@Search">Search</button>
+</div>
+
+@code {
+
+    private string searchText { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ValueChanged { get; set;  }
+
+    private async Task Search()
+    {
+        await ValueChanged.InvokeAsync(searchText);
+    }
+  
+}
