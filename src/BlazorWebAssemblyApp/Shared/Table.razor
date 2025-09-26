@@ -1,7 +1,7 @@
 ﻿@typeparam T
 @using Domain.Models
 
-<table class="table table-bordered table-striped">
+<table class="table table-bordered table-striped table-@Theme">
     <thead>        
         @HeaderTemplate       
     </thead>
@@ -29,5 +29,8 @@
 
     [Parameter, EditorRequired]
     public required RenderFragment<T> RowTemplate { get; set; }
+
+    [Parameter]
+    public string Theme { get; set; } = "light";
 
 }

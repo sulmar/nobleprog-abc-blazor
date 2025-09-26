@@ -2,21 +2,24 @@
 @using BlazorWebAssemblyApp.Services
 @inject ICustomerService Api
 
-<h3>Customers</h3>
+<h3 id="customers-label">Customers</h3>
+
+
 
 @*
 
   two-way binding @bind-{property}
 *@
 
+<button class="btn btn-dark" @onclick=@ToggleTheme>Theme: @theme</button>
+
 <SearchPanel ValueChanged=@SearchAsync />
 
 <Loader IsLoading=@isLoading>
-    <CustomerTable Customers="@customers" />    
+    <CustomerTable Customers="@customers" Theme="@theme" />    
 </Loader>
 
     
-
 @code {
 
     private IEnumerable<Customer>? customers;
@@ -42,6 +45,13 @@
         await Task.Delay(3000);
 
         Console.WriteLine("Found.");
+    }
+
+    private string theme = "dark";
+
+    private void ToggleTheme()
+    {
+        theme = theme == "light" ? "dark" : "light";
     }
 }
 
