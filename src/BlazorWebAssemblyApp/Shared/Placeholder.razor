@@ -1,9 +1,15 @@
 @using BlazorWebAssemblyApp.Services
 
-<p>@Message</p>
+<div class="alert alert-@Theme">
+    <p>@Message</p>
+</div>
 
 @code {
 
     [Parameter, EditorRequired]
     public string Message { get; set; }
+
+    [CascadingParameter]
+    public string Theme { get; set; }
+
 }

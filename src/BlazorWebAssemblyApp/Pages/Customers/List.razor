@@ -15,9 +15,15 @@
 
 <SearchPanel ValueChanged=@SearchAsync />
 
-<Loader IsLoading=@isLoading>
-    <CustomerTable Customers="@customers" Theme="@theme" />    
-</Loader>
+<CascadingValue Value="@theme">
+
+    <Loader IsLoading=@isLoading>
+        <CustomerTable Customers="@customers" />    
+    </Loader>
+
+</CascadingValue>
+
+
 
     
 @code {

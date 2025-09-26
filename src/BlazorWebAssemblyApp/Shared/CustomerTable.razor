@@ -1,5 +1,5 @@
 ﻿
-<Table Items="@Customers" Theme="@Theme">
+<Table Items="@Customers">
     <HeaderTemplate>
         <tr>
             <th>Name</th>
@@ -18,9 +18,5 @@
 
     [Parameter, EditorRequired]
     public required IEnumerable<Customer> Customers { get; set; }
-
-
-    [Parameter]
-    public string Theme { get; set; } = "light";
 
 }
