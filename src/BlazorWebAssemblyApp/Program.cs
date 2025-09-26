@@ -17,4 +17,9 @@ builder.Services.AddScoped<IProductService, ProductService>();
 
 builder.Services.AddSingleton<ApplicationState>(); // Registered
 
+builder.Services.AddCascadingValue<ApplicationState>(f => f.GetRequiredService<ApplicationState>());
+builder.Services.AddCascadingValue<int>(f => 20);
+builder.Services.AddCascadingValue<string>("n", f => "Contor");
+builder.Services.AddCascadingValue<string>("t", f => "dark");
+
 await builder.Build().RunAsync();
