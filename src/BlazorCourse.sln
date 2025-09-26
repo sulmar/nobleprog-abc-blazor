@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{7
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hello.Api", "Hello.Api\Hello.Api.csproj", "{BE214F73-7324-4EC1-8DF5-7870679CE9B4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HybridMauiApp", "HybridMauiApp\HybridMauiApp.csproj", "{5942499A-681B-4393-B73A-AE35F4FEFEF6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,19 @@ Global
 		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|x64.Build.0 = Release|Any CPU
 		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|x86.ActiveCfg = Release|Any CPU
 		{BE214F73-7324-4EC1-8DF5-7870679CE9B4}.Release|x86.Build.0 = Release|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Debug|x64.Build.0 = Debug|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Debug|x86.Build.0 = Debug|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Release|x64.ActiveCfg = Release|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Release|x64.Build.0 = Release|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Release|x86.ActiveCfg = Release|Any CPU
+		{5942499A-681B-4393-B73A-AE35F4FEFEF6}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

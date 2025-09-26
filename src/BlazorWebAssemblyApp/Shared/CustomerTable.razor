@@ -1,15 +1,21 @@
-﻿
+﻿@inject NavigationManager NavigationManager
+
 <Table Items="@Customers">
     <HeaderTemplate>
         <tr>
             <th>Name</th>
             <th>Email</th>
+            <th>Actions</th>
         </tr>
     </HeaderTemplate>
     <RowTemplate Context="customer">
-        <tr>
+        <tr @onclick="() => View(customer.Id)" >
             <td>@customer.Name</td>
             <td>@customer.Email</td>
+            <td>
+                <a class="btn btn-primary" href="/customers/@customer.Id">View</a>
+                <button class="btn btn-danger" @onclick="() => Remove(customer.Id)" >Remove</button>
+            </td>
         </tr>
     </RowTemplate>
 </Table>
@@ -18,5 +24,16 @@
 
     [Parameter, EditorRequired]
     public required IEnumerable<Customer> Customers { get; set; }
+
+
+    private void Remove(int id)
+    {
+        Console.WriteLine($"Remove {id}");
+    }
+
+    private void View(int id)
+    {        
+        NavigationManager.NavigateTo($"/customers/{id}");
+    }
 
 }

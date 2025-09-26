@@ -1,0 +1,29 @@
+﻿@page "/customers/{id:int}"
+@using BlazorWebAssemblyApp.Services
+@inject ICustomerService Api
+
+<h3>View</h3>
+
+@if (customer is null)
+{
+    <Placeholder Message="Loading customer..." />
+}
+else
+{
+    @customer.Id @customer.Name @customer.Email
+}
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private Customer? customer;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        customer = await Api.GetById(Id);
+    }
+
+}

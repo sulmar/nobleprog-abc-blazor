@@ -46,6 +46,9 @@ app.MapGet("/", () => "Hello Api!");
 app.MapGet("/api/customers", async (ICustomerRepository repository)
     => await repository.GetAllAsync() ); // F9
 
+app.MapGet("/api/customers/{id}", async (ICustomerRepository repository, int id)
+    => await repository.GetByIdAsync(id)); // F9
+
 app.MapGet("/api/products", async (IProductRepository repository)
     => await repository.GetAllAsync());
 

@@ -8,6 +8,7 @@ public interface IEntityService<T>
     where T : class
 {
     Task<IEnumerable<T>?> GetAll();
+    Task<T?> GetById(int id);
 }
 
 public interface ICustomerService : IEntityService<Customer>
@@ -29,11 +30,17 @@ public class CustomerService(HttpClient http) : ICustomerService
     {
         throw new NotImplementedException();
     }
+    public Task<Customer?> GetById(int id) => http.GetFromJsonAsync<Customer?>($"api/customers/{id}");
 }
 
 
 public class ProductService(HttpClient http) : IProductService
 {
     public Task<IEnumerable<Product>?> GetAll() => http.GetFromJsonAsync<IEnumerable<Product>>("api/products");
+
+    public Task<Product?> GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
 }
 
